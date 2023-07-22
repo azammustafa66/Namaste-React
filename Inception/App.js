@@ -2,7 +2,7 @@
 
 /*
     React dosent create any HTML elements when you use CreateElement it creates an object 
-    only when you use reder() it creates an HTML element
+    only when you use render() it creates an HTML element
 */
 
 const parent = React.createElement("div", { id: "parent" }, [
