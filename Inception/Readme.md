@@ -15,7 +15,7 @@
 
 ## Why is React known as React?
 
-- React is known as Rect beacuse of reactive programming where the UI elements change and react to UI accordingly
+- React is known as Rect beacuse of reactive programming where the UI elements change and react to change in UI accordingly.
 
 ## What is crossorigin in `script` tag?
 
