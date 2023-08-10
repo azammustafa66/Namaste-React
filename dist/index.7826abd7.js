@@ -2953,18 +2953,72 @@ const heading = /*#__PURE__*/ (0, _reactDefault.default).createElement("h1", {
 }, "React \uD83D\uDE80");
 console.log(heading);
 // jsx
-const jsxHeading = /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-    className: "head",
-    children: "This is a JSX heading"
-}, void 0, false, {
-    fileName: "App.js",
-    lineNumber: 9,
-    columnNumber: 20
-}, undefined);
-console.log(jsxHeading);
+const JsxHeading = ()=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+        className: "head",
+        children: "This is a JSX heading"
+    }, void 0, false, {
+        fileName: "App.js",
+        lineNumber: 9,
+        columnNumber: 26
+    }, undefined);
+_c = JsxHeading;
+console.log(JsxHeading);
 /* The above code is JSX and when it is executed it becomes a React
 Element */ // Your code should be readable by everyone
-(0, _clientDefault.default).createRoot(document.getElementById("root")).render(jsxHeading);
+const num = 101;
+const HeadingComponent = ()=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        id: "container",
+        children: [
+            (num & 1) == 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                children: [
+                    num,
+                    " is Even"
+                ]
+            }, void 0, true, {
+                fileName: "App.js",
+                lineNumber: 20,
+                columnNumber: 25
+            }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                children: [
+                    num,
+                    " is Odd"
+                ]
+            }, void 0, true, {
+                fileName: "App.js",
+                lineNumber: 20,
+                columnNumber: 50
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                id: "heading",
+                children: "Hi, from functional component \uD83D\uDE80"
+            }, void 0, false, {
+                fileName: "App.js",
+                lineNumber: 21,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(JsxHeading, {}, void 0, false, {
+                fileName: "App.js",
+                lineNumber: 22,
+                columnNumber: 7
+            }, undefined),
+            JsxHeading()
+        ]
+    }, void 0, true, {
+        fileName: "App.js",
+        lineNumber: 19,
+        columnNumber: 5
+    }, undefined);
+};
+_c1 = HeadingComponent;
+(0, _clientDefault.default).createRoot(document.getElementById("root")).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(HeadingComponent, {}, void 0, false, {
+    fileName: "App.js",
+    lineNumber: 29,
+    columnNumber: 3
+}, undefined));
+var _c, _c1;
+$RefreshReg$(_c, "JsxHeading");
+$RefreshReg$(_c1, "HeadingComponent");
 
   $parcel$ReactRefreshHelpers$c1db.postlude(module);
 } finally {

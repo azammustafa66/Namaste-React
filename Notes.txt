@@ -20,3 +20,13 @@ Wrap your elements inside a round brackets if they are in multiple lines not req
 
 There are two components in React:  1. Class based components - Old
                                     2. Function based components - New
+
+React functional components are just JS functions (always write functions in Capitalised form) which return JSX
+
+We cannot directly render functional components inside root.render we need to write the components as self closing tags
+
+Component composition is nesting multiple components in a single component
+
+You can JS code anywhere by opening a pair of curly braces
+
+Attacker can read your local cookies and local storage when we use a malicious API. But JSX manages this malicious code
