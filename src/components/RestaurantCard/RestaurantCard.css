@@ -1,0 +1,38 @@
+.restaurant-cards {
+  width: 273px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: 10px;
+  transition: all 0.2s ease;
+  gap: 5px;
+}
+
+.restaurant-cards:hover {
+  cursor: pointer;
+  transform: scale(0.9);
+  transition: all 0.2 ease-in;
+}
+
+.res-img {
+  width: 273px;
+  height: 180px;
+  border-radius: 8px;
+}
+
+.name {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cuisines {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 8px 0;
+}

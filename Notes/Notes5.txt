@@ -1,0 +1,13 @@
+- Giving key props is very important else React re-renders every component in the DOM and each key should be unique
+- React's official doc says not to use index as key
+
+How React works behind the scenes
+- It uses Reconciliation Algorithm or React Fibre
+
+What does react do when you use a hook?
+- It copies DOM and creates a virtual DOM (virtual DOM is just a representation of original DOM). It changes the data in the virtual DOM.
+
+So now what is virtual DOM?
+- It is an object of the functional component that the trans piler compiles as HTML elements
+
+

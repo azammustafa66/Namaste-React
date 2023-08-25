@@ -1,0 +1,8 @@
+What is Monolith?
+- When everything is written in one file then it is a Monolith service and everything is written in single language
+
+What is microservice?
+
+
+useEffect hooks will be called after your component is rendered
+

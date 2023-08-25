@@ -1,0 +1,56 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+#search {
+  all: unset;
+  width: 375px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1px solid #808080;
+}
+
+button {
+  all: unset;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #808080;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.restaurant-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+.link-style {
+  display: block;
+  text-decoration: none;
+  border-radius: 5px;
+  width: 300px;
+  transition: background-color 0.2s ease;
+  color: inherit;
+}
+
+.link-style:hover {
+  background-color: #f0f0f0;
+}
