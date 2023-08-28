@@ -50,7 +50,7 @@ export const Header = () => {
           </ListItem>
           <ListItem>
             <button
-              className=" bg-orange-300 text-white rounded-md text-center w-14"
+              className="text-white rounded-md text-center w-14 bg-orange-300"
               onClick={handleClick}
             >
               {btnState}

@@ -1,4 +1,4 @@
-import './User.css'
+import "./User.css";
 
 const User = () => {
   return (
@@ -9,6 +9,5 @@ const User = () => {
     </div>
   );
 };
-
 
 export default User;

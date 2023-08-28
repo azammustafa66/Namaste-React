@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { IMG_URL } from "../utils/url";
 import styled from "styled-components";
 
@@ -13,7 +14,7 @@ const RestaurantCard = ({
       <img
         src={IMG_URL + cloudinaryImageId}
         alt="res-image"
-        className="rounded-lg w-72 h-48"
+        className="rounded-lg w-72 h-44"
       />
       <div className="max-w-full whitespace-nowrap overflow-hidden text-ellipsis">
         <h3 className="font-bold">{name}</h3>
@@ -32,6 +33,15 @@ const RestaurantCard = ({
 };
 
 export default RestaurantCard;
+
+export const isPromoted = (RestaurantCard) => {
+  (props) => (
+    <div>
+      <label>Promoted</label>
+      <RestaurantCard {...props} />
+    </div>
+  );
+};
 
 const StyledDiv = styled.div`
   width: 273px;

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { isPromoted } from "./RestaurantCard";
 import Shimmer from "./Shimmer/Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
@@ -11,22 +11,26 @@ const Body = () => {
   const [filteredRestaurant, setFilteredRestaurants] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
+  const RestaurantCardPromoted = isPromoted(RestaurantCard);
+
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9970483&lng=77.61440759999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9970483&lng=77.61440759999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
     );
 
     const json = await data.json();
 
     setRestaurantList(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants,
     );
     setFilteredRestaurants(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants,
     );
     // console.log(
     //   json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -41,7 +45,7 @@ const Body = () => {
 
   const topRatedRestaurants = () => {
     const filteredList = filteredRestaurant.filter(
-      (restaurant) => restaurant.info.avgRating >= 4.2
+      (restaurant) => restaurant.info.avgRating >= 4.2,
     );
 
     setFilteredRestaurants(filteredList);
@@ -57,8 +61,8 @@ const Body = () => {
       (restaurant) =>
         restaurant.info.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         restaurant.info.cuisines.some((cuisine) =>
-          cuisine.toLowerCase().includes(searchTerm.toLowerCase())
-        )
+          cuisine.toLowerCase().includes(searchTerm.toLowerCase()),
+        ),
     );
 
     setFilteredRestaurants(filteredResults);
@@ -68,7 +72,7 @@ const Body = () => {
     const sortedData = [...filteredRestaurant].sort(
       (a, b) =>
         parseInt(a.info.costForTwo.match(/\d+/)[0]) -
-        parseInt(b.info.costForTwo.match(/\d+/)[0])
+        parseInt(b.info.costForTwo.match(/\d+/)[0]),
     );
 
     setFilteredRestaurants(sortedData);
@@ -78,7 +82,7 @@ const Body = () => {
     const sortedData = [...filteredRestaurant].sort(
       (a, b) =>
         parseInt(b.info.costForTwo.match(/\d+/)[0]) -
-        parseInt(a.info.costForTwo.match(/\d+/)[0])
+        parseInt(a.info.costForTwo.match(/\d+/)[0]),
     );
 
     setFilteredRestaurants(sortedData);
@@ -113,7 +117,11 @@ const Body = () => {
             to={"/restaurant/" + restaurant.info.id}
             className="link-style"
           >
-            <RestaurantCard {...restaurant.info} />
+            {restaurant.info.promoted ? (
+              <RestaurantCardPromoted {...restaurant.info} />
+            ) : (
+              <RestaurantCard {...restaurant.info} />
+            )}
           </StyledLink>
         ))}
       </div>
