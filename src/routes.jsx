@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
-import About from "./components/Routes/About";
 import ContactUs from "./components/Routes/ContactUs";
 import Error from "./components/Routes/Error";
 import Body from "./components/Body";
@@ -11,6 +10,7 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import Shimmer from "./components/Shimmer/Shimmer";
 
 const Grocery = lazy(() => import("./components/Grocery/Grocery"));
+const About = lazy(() => import("./components/Routes/About"));
 
 export const appRouter = createBrowserRouter([
   {

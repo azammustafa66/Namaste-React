@@ -1,6 +1,7 @@
-/* eslint-disable react/prop-types */
-import { IMG_URL } from "../utils/url";
 import styled from "styled-components";
+import PropTypes from "prop-types";
+
+import { IMG_URL } from "../utils/url";
 
 const RestaurantCard = ({
   name,
@@ -30,6 +31,14 @@ const RestaurantCard = ({
       </div>
     </StyledDiv>
   );
+};
+
+RestaurantCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  cuisines: PropTypes.arrayOf(PropTypes.string).isRequired,
+  cloudinaryImageId: PropTypes.string.isRequired,
+  avgRating: PropTypes.number.isRequired,
+  costForTwo: PropTypes.string.isRequired,
 };
 
 export default RestaurantCard;

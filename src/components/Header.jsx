@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 import logo from "../assets/logo.jpg";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/userContext";
 
 export const Header = () => {
+  const { loggedInUser } = useContext(UserContext);
   const [btnState, setBtnState] = useState("Login");
   const [login, setLogin] = useState(true);
   const onlineStatus = useOnlineStatus();
@@ -16,19 +19,17 @@ export const Header = () => {
   useEffect(() => {}, [btnState]);
 
   const handleClick = () => {
-    if (login) {
-      setBtnState("Logout");
-    } else {
-      setBtnState("Login");
-    }
+    login ? setBtnState("Logout") : setBtnState("Login");
 
     setLogin(!login);
   };
 
   return (
-    <div className="flex items-center justify-between border-black">
+    <nav className="flex items-center justify-between border-black">
       <div>
-        <img src={logo} width={200} alt="" />
+        <Link to={"/"}>
+          <img src={logo} width={200} alt="" />
+        </Link>
       </div>
       <div className="nav-items">
         <ul className="flex items-center list-none font-base pr-4 cursor-pointer">
@@ -43,7 +44,9 @@ export const Header = () => {
             <Link to={"/contact-us"}>Contact us</Link>
           </ListItem>
           <ListItem>
-            <Link to={"/cart"}>Cart</Link>
+            <Link to={"/cart"}>
+              <AiOutlineShoppingCart />
+            </Link>
           </ListItem>
           <ListItem>
             <Link to={"/grocery"}>Grocery</Link>
@@ -56,9 +59,10 @@ export const Header = () => {
               {btnState}
             </button>
           </ListItem>
+          <ListItem>{loggedInUser}</ListItem>
         </ul>
       </div>
-    </div>
+    </nav>
   );
 };
 

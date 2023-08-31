@@ -1,7 +1,10 @@
 import styled from "styled-components";
+import PropTypes from "prop-types";
+
 import { IMG_URL } from "../utils/url";
 
 const ItemList = ({ items }) => {
+  // console.log(items);
   return (
     <div className="flex flex-col flex-1 gap-6 items-start px-3">
       {items?.map((item) => (
@@ -38,6 +41,10 @@ const ItemList = ({ items }) => {
   );
 };
 
+ItemList.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
 export default ItemList;
 
 const Button = styled.button`
@@ -49,9 +56,10 @@ const Button = styled.button`
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
-  right: 27.75%;
+  right: 27.1%;
 
   &:hover {
-    background-color: #d5ad80;
+    background-color: #21d109;
+    color: #f0f0f0;
   }
 `;
