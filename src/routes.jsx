@@ -7,8 +7,8 @@ import Error from "./components/Routes/Error";
 import Body from "./components/Body";
 import Cart from "./components/Cart";
 import RestaurantMenu from "./components/RestaurantMenu";
-import Shimmer from "./components/Shimmer/Shimmer";
 import About from "./components/Routes/About";
+import MenuShimmer from "./components/Shimmer/MenuShimmer";
 
 const Grocery = lazy(() => import("./components/Grocery/Grocery"));
 
@@ -40,7 +40,7 @@ export const appRouter = createBrowserRouter([
       {
         path: "/grocery",
         element: (
-          <Suspense fallback={<Shimmer />}>
+          <Suspense fallback={<MenuShimmer />}>
             <Grocery />
           </Suspense>
         ),
