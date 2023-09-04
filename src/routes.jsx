@@ -8,9 +8,9 @@ import Body from "./components/Body";
 import Cart from "./components/Cart";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Shimmer from "./components/Shimmer/Shimmer";
+import About from "./components/Routes/About";
 
 const Grocery = lazy(() => import("./components/Grocery/Grocery"));
-const About = lazy(() => import("./components/Routes/About"));
 
 export const appRouter = createBrowserRouter([
   {

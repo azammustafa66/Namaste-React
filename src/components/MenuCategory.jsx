@@ -33,7 +33,7 @@ const MenuCategory = ({ data, isExpanded, setShowIndex }) => {
 MenuCategory.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    itemCards: PropTypes.arrayOf(PropTypes.object),
+    itemCards: PropTypes.arrayOf(PropTypes.object).isRequired,
   }).isRequired,
   isExpanded: PropTypes.bool.isRequired,
   setShowIndex: PropTypes.func.isRequired,

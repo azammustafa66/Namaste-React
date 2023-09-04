@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -24,6 +25,9 @@ export const Header = () => {
     setLogin(!login);
   };
 
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
+
   return (
     <nav className="flex items-center justify-between border-black">
       <div>
@@ -45,7 +49,10 @@ export const Header = () => {
           </ListItem>
           <ListItem>
             <Link to={"/cart"}>
-              <AiOutlineShoppingCart />
+              <div className="relative text-right">
+                <AiOutlineShoppingCart size={25} />
+                <StyledP>{cartItems.length}</StyledP>
+              </div>
             </Link>
           </ListItem>
           <ListItem>
@@ -71,4 +78,17 @@ export default Header;
 const ListItem = styled.li`
   padding: 20px;
   margin-left: 10px;
+`;
+
+const StyledP = styled.p`
+  background-color: red;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  position: absolute;
+  top: -15px;
+  left: 80%;
+  padding: 3px 8px;
 `;
