@@ -2,6 +2,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import { IMG_URL } from "../utils/url";
+import { Card } from "react-bootstrap";
 
 const RestaurantCard = ({
   name,
@@ -10,25 +11,30 @@ const RestaurantCard = ({
   avgRating,
   costForTwo,
 }) => {
+  function truncateString(string, maxLength) {
+    return string.length > maxLength
+      ? string.slice(0, maxLength) + "..."
+      : string;
+  }
+
+  const truncatedCuisines = truncateString(cuisines.join(", "), 25);
+  const truncatedName = truncateString(name, 20);
+
   return (
     <StyledDiv>
-      <img
-        src={IMG_URL + cloudinaryImageId}
-        alt="res-image"
-        className="rounded-lg w-72 h-44"
-      />
-      <div className="max-w-full whitespace-nowrap overflow-hidden text-ellipsis">
-        <h3 className="font-bold">{name}</h3>
-      </div>
-      <div className="max-w-full whitespace-nowrap overflow-hidden text-ellipsis my-2">
-        <h4 title={cuisines}>{cuisines.join(", ")}</h4>
-      </div>
-      <div className="rating">
-        <h4>Rating: {avgRating}</h4>
-      </div>
-      <div className="cost">
-        <h4>{costForTwo}</h4>
-      </div>
+      <Card className="p-2">
+        <Card.Img
+          variant="top"
+          src={IMG_URL + cloudinaryImageId}
+          className="rounded-lg w-72 h-44"
+        />
+        <Card.Body>
+          <Card.Title>{truncatedName}</Card.Title>
+          <Card.Text>{truncatedCuisines}</Card.Text>
+          <Card.Text>Rating: {avgRating}</Card.Text>
+          <Card.Text>{costForTwo}</Card.Text>
+        </Card.Body>
+      </Card>
     </StyledDiv>
   );
 };
@@ -53,7 +59,7 @@ export const isPromoted = (RestaurantCard) => {
 };
 
 const StyledDiv = styled.div`
-  width: 273px;
+  width: 18rem;
   border-radius: 10px;
   display: flex;
   flex-direction: column;

@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import RestaurantCard, { isPromoted } from "./RestaurantCard";
-import Shimmer from "./Shimmer/Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import CardShimmer from "./Shimmer/CardShimmer";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -32,9 +32,9 @@ const Body = () => {
     setFilteredRestaurants(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    console.log(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+    // console.log(
+    //   json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    // );
   };
 
   const onlineStatus = useOnlineStatus();
@@ -88,9 +88,7 @@ const Body = () => {
     setFilteredRestaurants(sortedData);
   };
 
-  return filteredRestaurant?.length === 0 ? (
-    <Shimmer />
-  ) : (
+  return (
     <div className="flex flex-col items-center justify-center gap-6">
       <div className="flex flex-col items-center justify-center gap-6">
         <div className="">
@@ -108,20 +106,26 @@ const Body = () => {
           <Button onClick={sortHighToLow}>Sort High to Low</Button>
         </div>
       </div>
-      <div className="flex flex-1 flex-wrap items-center justify-center gap-6">
-        {filteredRestaurant?.map((restaurant) => (
-          <StyledLink
-            key={restaurant.info.id}
-            to={"/restaurant/" + restaurant.info.id}
-          >
-            {restaurant.info.promoted ? (
-              <RestaurantCardPromoted {...restaurant.info} />
-            ) : (
-              <RestaurantCard {...restaurant.info} />
-            )}
-          </StyledLink>
-        ))}
-      </div>
+      {filteredRestaurant?.length === 0 ? (
+        <div className="flex flex-1 flex-wrap items-center justify-center gap-6">
+          <CardShimmer />
+        </div>
+      ) : (
+        <div className="flex flex-1 flex-wrap items-center justify-center gap-6">
+          {filteredRestaurant?.map((restaurant) => (
+            <StyledLink
+              key={restaurant.info.id}
+              to={"/restaurant/" + restaurant.info.id}
+            >
+              {restaurant.info.promoted ? (
+                <RestaurantCardPromoted {...restaurant.info} />
+              ) : (
+                <RestaurantCard {...restaurant.info} />
+              )}
+            </StyledLink>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

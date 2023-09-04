@@ -26,7 +26,7 @@ export const Header = () => {
   };
 
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
+  // console.log(cartItems);
 
   return (
     <nav className="flex items-center justify-between border-black">

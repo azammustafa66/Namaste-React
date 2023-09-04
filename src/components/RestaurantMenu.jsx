@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import MenuCategory from "./MenuCategory";
-import Shimmer from "./Shimmer/Shimmer";
+import MenuShimmer from "./Shimmer/MenuShimmer";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -26,7 +26,7 @@ const RestaurantMenu = () => {
   // console.log(categories);
 
   return restaurantInfo === null ? (
-    <Shimmer />
+    <MenuShimmer />
   ) : (
     <div className="text-center">
       <h1 className="font-bold my-6 text-3xl">{name}</h1>
